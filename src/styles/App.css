@@ -19,3 +19,17 @@ body {
   border-width: 1px 0;
   background: #666;
 }
+
+.imgs-wrap{
+  list-style: none;
+}
+
+.imgs-wrap li{
+  float: left;
+  margin: 10px;
+}
+
+.imgs-wrap li img{
+  width: 300px;
+  height: 400px;
+}

@@ -5,13 +5,31 @@ import React from 'react';
 
 let yeomanImage = require('../images/yeoman.png');
 
+let imgsArr  = [];
+(function(imgsArr){
+  for(let i =1;i<=10;i++){
+    imgsArr.push(require(`../images/imgs/${i}.jpg`));
+  }
+  return imgsArr;
+})(imgsArr);
+
+console.log(imgsArr);
+
+let imgs = imgsArr.map(function (item) {
+  return (
+    <li>
+      <img src={item} title/>
+    </li>
+  );
+});
+console.log(imgs);
+
 class AppComponent extends React.Component {
   render() {
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-      </div>
+      <ul className="imgs-wrap">
+        {imgs}
+      </ul>
     );
   }
 }
