@@ -27,9 +27,12 @@ console.log(imgs);
 class AppComponent extends React.Component {
   render() {
     return (
-      <ul className="imgs-wrap">
-        {imgs}
-      </ul>
+      <section className="stage">
+        <section className="img-list">
+        </section>
+        <nav className="nav">
+        </nav>
+      </section>
     );
   }
 }
