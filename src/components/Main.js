@@ -4,7 +4,8 @@ require('styles/App.css');
 import React from 'react';
 
 let yeomanImage = require('../images/yeoman.png');
-
+let json = require('../data/imagesDatas.json');
+console.log(json);
 let imgsArr  = [];
 (function(imgsArr){
   for(let i =1;i<=10;i++){
@@ -24,11 +25,30 @@ let imgs = imgsArr.map(function (item) {
 });
 console.log(imgs);
 
+let ImgFigure = React.createClass({
+  render(){
+    return (
+      <figure>
+        <img src={this.props.data.fileNme} title="img not found"/>
+        <figcaption>
+          <h2>title</h2>
+        </figcaption>
+      </figure>
+    );
+  }
+});
+
 class AppComponent extends React.Component {
   render() {
+    var controllerUnits = [],
+        imgFigures = [];
+        imgsArr.forEach(function (value) {
+          imgFigures.push(<ImgFigure data={value}/>)
+        });
     return (
       <section className="stage">
-        <section className="img-list">
+        <section className="controller">
+          {imgFigures}
         </section>
         <nav className="nav">
         </nav>
