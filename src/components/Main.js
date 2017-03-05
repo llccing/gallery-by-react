@@ -12,8 +12,6 @@ json = (function(json){
   return json;
 })(json);
 
-
-
 function change (json) {
   let width = document.body.clientWidth-340;
   let height = document.body.clientHeight - 520;
@@ -26,18 +24,17 @@ function change (json) {
   return json;
 }
 
-console.log(json);
-
-let ImgFigure = React.createClass({
-  getInitialState(){
-    return {data:change(json)};
-  },
+// 图片组件
+class ImgFigure extends React.Component{
+  state={
+    data:change(json)
+  }
 
   changePosition(){
     this.setState({
       data:change(json)
     });
-  },
+  }
 
   render(){
     let data = this.state.data;
@@ -50,17 +47,14 @@ let ImgFigure = React.createClass({
       </figure>
     );
   }
-});
+}
 
-let circleLi = React.createClass({
-  render(){
-    return(
-      <li className="circle-li">o</li>
-    );
-  }
-});
-
+// 外层组件
 class AppComponent extends React.Component {
+  state={
+    count:0
+  }
+
   render() {
     var controllerUnits = [],
         imgFigures = [];
