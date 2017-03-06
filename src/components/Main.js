@@ -26,8 +26,11 @@ function change (json) {
 
 // 图片组件
 class ImgFigure extends React.Component{
-  state={
-    data:change(json)
+  constructor(){
+    super();
+    this.state={
+      data:change(json)
+    }
   }
 
   changePosition(){
@@ -36,7 +39,14 @@ class ImgFigure extends React.Component{
     });
   }
 
+
+  componentDidMount(){
+
+  }
+
   render(){
+
+
     let data = this.state.data;
     return (
       <figure onClick={this.changePosition} style={{left:this.props.data.left,top:this.props.data.top,transform:this.props.data.rotate}}>
@@ -51,8 +61,34 @@ class ImgFigure extends React.Component{
 
 // 外层组件
 class AppComponent extends React.Component {
-  state={
-    count:0
+  constructor(){
+    super();
+
+    const constant={
+      centPos:{
+        left:0,
+        right:0
+      },
+      hPosRange:{ // 水平方向取值
+        leftSecX:[0,0],
+        rightSecX:[0,0],
+        y:[0,0]
+      },
+      vPosRange:{
+        x:[0,0],
+        topY:[0,0]
+      }
+    };
+  }
+  // state={
+    // count:0
+  // }
+
+  // 组件加载后，计算图片位置范围
+  componentDidMount(){
+    console.log(this);
+    var stageDOM = React.findDOMNode(this.refs.stage);
+    console.log(stageDOM);
   }
 
   render() {
@@ -64,7 +100,7 @@ class AppComponent extends React.Component {
         });
 
     return (
-      <section className="stage">
+      <section className="stage" ref="stage">
         <section className="controller">
           {imgFigures}
         </section>
